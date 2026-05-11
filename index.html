@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="UTF-8">
+  <title>Memory System</title>
+
+  <style>
+    .hidden{
+      display:none;
+    }
+    </style>
+
+  <link rel="stylesheet" href="main.css">  
+</head>
+
+<body>
+
+<!-- 登入介面 -->
+<div class="page login-page" id="login">
+
+  <h3>
+    此次實驗為A組
+  </h3>
+  
+  <h2>登入</h2>
+
+  <div class = "form">
+
+    <input id = "name" placeholder="請輸入名字">
+    <input id = "age" placeholder="請輸入年齡">
+    <input id = "email" placeholder="請輸入email">
+
+    <button onclick = "login()" class ="start-button">開始</button>
+
+  </div>
+
+  <h3>測驗介紹及須知:</h3>
+
+  <div class="card">
+  
+    <p>
+      本系統旨在模擬「間隔重複（Spaced Repetition）」學習法，
+      用於探討其對單字記憶及對抗遺忘曲線的優劣。
+    </p>
+  
+    <p>
+      使用者將透過多次測驗（共四階段），
+      記錄每次的答題表現、作答時間與相隔時長，
+      並分析記憶隨時間的變化。
+    </p>
+  
+    <hr>
+  
+    <p>
+      本實驗分為兩組：
+    </p>
+  
+    <ul>
+      <li><b>A組：</b>每次皆進行學習與測驗</li>
+      <li><b>B組：</b>部分階段將跳過學習，測試記憶保留效果</li>
+    </ul>
+
+    <h2 class="warning-text red">
+      本實驗資料僅用於學術研究分析，不會公開個資。
+    </h2>
+
+  </div>
+  
+</div>
+
+<!-- 測驗前須知 -->
+
+<div class="page hidden" id="intro">
+  <div class="card">
+    <h2>測驗前須知</h2>
+  
+    <ul>
+      <li>每次測驗前將會有5分鐘的學習時間</li>
+      <li>測驗方式為中翻英(不須注意大小寫) </li>
+      <li>每次測驗包含 20 個英文單字</li>
+      <li>本測驗共 4 個階段（P1～P4）</li>
+      <li>請遵守以下注意事項以減少數據誤差</li>
+    </ul>
+  
+    <hr>
+  
+    <h3>
+      ⚠️ 注意事項：
+    </h3>
+  
+    <ul>
+      <li>測驗中途不可關閉頁面</li>
+      <li>請勿使用翻譯工具</li>
+      <li>請在較安靜、無干擾處進行測驗</li>
+    </ul>
+
+  </div>
+
+  <h3>選擇測驗階段 (請記得!!!)</h3>
+
+  <select id="phase">
+
+    <option value="p1">第一次測驗</option>
+    <option value="p2">第二次測驗</option>
+    <option value="p3">第三次測驗</option>
+    <option value="p4">第四次測驗</option>
+
+  </select>
+
+  <br><br>
+
+  <button onclick="startPhase()">
+    開始測驗
+  </button>
+
+</div>
+
+<!-- 學習 -->
+<div class="page hidden" id="study">
+  <h2>學習階段</h2>
+
+  <div id="words"></div>
+  <div id="timer"></div>
+</div>
+
+<!-- 測驗 -->
+<div class="page hidden" id="test">
+  <h2>測驗</h2>
+  <div id="q"></div>
+  <div id="progress"></div>
+  <input id="ans">
+  <button onclick="submit()">提交</button>
+  <button onclick="next()">下一題</button>
+  <div id="fb"></div>
+</div>
+
+<!-- 結果 -->
+<div class="page hidden" id="result">
+  <h2>結果</h2>
+  <div id="out"></div>
+  <hiv id="over"></hiv>
+</div>
+
+<script src="db.js"></script>
+<script src="vocab.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
